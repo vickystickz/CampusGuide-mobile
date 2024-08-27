@@ -28,7 +28,14 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsImpl": "mapbox",
+          "RNMapboxMapsDownloadToken": "sk.eyJ1Ijoidmlja3lzdGlja3oiLCJhIjoiY20wYmIzZDllMDY4bjJqczhoY3ljczNzZiJ9.nEbaMS1GW0B1gmgxfNcTMA"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
