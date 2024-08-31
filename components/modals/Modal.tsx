@@ -7,7 +7,6 @@ import Modal from "react-native-modal";
 // https://github.com/react-native-modal/react-native-modal
 const ModalComponent = ({ children, modalVisible, setModalVisible }: { children: React.ReactNode, modalVisible: boolean, setModalVisible: (x: boolean) => void }) => {
     return (
-
         <Modal isVisible={modalVisible}
             className='flex items-center justify-center'
             backdropColor='black'
@@ -18,12 +17,10 @@ const ModalComponent = ({ children, modalVisible, setModalVisible }: { children:
             swipeDirection="left"
             hideModalContentWhileAnimating={true}
             backdropTransitionOutTiming={0}
+
         >
             {children}
         </Modal>
-
-
-
     );
 };
 

@@ -8,7 +8,7 @@ type TextDisplayProps = {
     customStyle?: string
 }
 
-const TruncatedText: React.FC<TextDisplayProps> = ({ text, maxLength = 15, customStyle }) => {
+const TruncatedText: React.FC<TextDisplayProps> = ({ text, maxLength = 50, customStyle }) => {
 
     // For some reason, `truncate` is not working, perhaps it's not supported yet by nativewind, so 
     // we have to use this function for now.

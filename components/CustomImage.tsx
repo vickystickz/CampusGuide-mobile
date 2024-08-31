@@ -6,22 +6,20 @@ const blurhash =
 
 
 
-export const CustomImage = ({ src, transition = 1000, contentFit = 'contain', style }: {
+export const CustomImage = ({ src, transition = 10, contentFit = 'contain', style }: {
     src: string,
     transition?: number,
     style: ImageStyle
     contentFit?: ImageContentFit
 }) => {
-
     return (
-
         <Image
             style={style}
             source={src}
             placeholder={{ blurhash }}
             contentFit={contentFit}
             transition={transition}
-        />
 
+        />
     )
 }

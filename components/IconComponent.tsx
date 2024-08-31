@@ -12,7 +12,7 @@ const IconComponent = ({ Icon, variant = 'fill', customStyle }: {
     }
 
     return (
-        <StyledView className={`w-[36px] p-2 h-[36px] rounded-full shadow-2xl bg-white flex items-center justify-center shadow-p75 border border-b50`}>
+        <StyledView className={`w-[36px] p-2 h-[36px] rounded-full shadow-3xl bg-white flex items-center justify-center shadow-black border border-b50`}>
             <Icon className={`w-4 h-4 ${style[variant]} ${customStyle}`} />
         </StyledView>
     )
