@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "CampusGuide-mobile",
-    "slug": "CampusGuide-mobile",
+    "name": "Campus Guide",
+    "slug": "Campus-Guide",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "campusguide",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/campus_guide_logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,21 +17,70 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/campus_guide_logo.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.CampusGuidemobile"
+      "package": "com.anonymous.CampusGuidemobile",
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_LOCATION"
+      ]
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/campus_guide_logo.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsImpl": "mapbox",
+          "RNMapboxMapsDownloadToken": "sk.eyJ1Ijoidmlja3lzdGlja3oiLCJhIjoiY20wYmIzZDllMDY4bjJqczhoY3ljczNzZiJ9.nEbaMS1GW0B1gmgxfNcTMA"
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow Campus Guide to use your location.",
+          "isIosBackgroundLocationEnabled": true,
+          "isAndroidBackgroundLocationEnabled": true,
+          "locationWhenInUsePermission": "Allow Campus Guide to use your location.",
+          "locationAlwaysPermission": "Allow Campus Guide to use your location."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "ShareExtension",
+                  "bundleIdentifier": "undefined.share-extension",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.undefined"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "72e4c9ce-f3e1-47e6-bad7-4e3c43ea5bb5"
+      }
     }
   }
 }
