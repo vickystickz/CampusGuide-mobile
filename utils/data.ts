@@ -1,6 +1,6 @@
 
 const SatelliteImage = require('@/assets/images/satellite_image.png')
-const OpenStreetMapImage = require('@/assets/images/satellite_image.png')
+const OpenStreetMapImage = require('@/assets/images/osm_image.png')
 
 
 

@@ -44,15 +44,20 @@ export default function DirectionsPage() {
     }
 
     const debouncedSearch = useDebounce(async (searchQuery: string) => {
-        const response = await forwardGeocode(searchQuery)
-        setGeocodingSearchResults(response)
-    }, 500); // Debounce delay of 500ms
+
+
+        const response = await forwardGeocode(searchQuery);
+        setGeocodingSearchResults(response);
+
+    }, 500);
 
 
     useEffect(() => {
+
         if (originInputIsFocused) {
             if (!origin) return
             debouncedSearch(origin);
+
         } else {
             if (!destination) return
             debouncedSearch(destination);
@@ -92,6 +97,7 @@ export default function DirectionsPage() {
                 setModalVisible={setModalVisible}
                 openSettings={goToSettings}
             />
+
             <StyledView className="w-full bg-white h-screen">
                 <Pressable onPress={() => {
                     // Disable the input activeness when the user clicks 
@@ -172,6 +178,7 @@ export default function DirectionsPage() {
                     </StyledView>
                 </Pressable>
                 <StyledView className="border-t border-[#E8E6EA] p-4 bg-[#F4F6F8] h-full">
+
                     {
                         geocodingSearchResult.length > 0 ?
                             <FlatList
@@ -193,6 +200,7 @@ export default function DirectionsPage() {
                                     <StyledText className="text-center">Try another query.</StyledText>
                                 </StyledView> : null
                     }
+
                 </StyledView>
             </StyledView>
         </SafeAreaView>
