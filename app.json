@@ -4,20 +4,21 @@
     "slug": "Campus-Guide",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/splash.png",
     "scheme": "campusguide",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/campus_guide_logo.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.CampusGuidemobile"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/campus_guide_logo.png",
+        "foregroundImage": "./assets/images/splash.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.anonymous.CampusGuidemobile",

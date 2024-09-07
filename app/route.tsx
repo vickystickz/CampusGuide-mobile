@@ -15,10 +15,10 @@ import { useMapboxDirectionsService } from "@/hooks/useDirectionsService";
 import { useMapContext } from "@/context/MapContext";
 import WalkingModeIcon from "@/components/icons/WalkingModeIcon";
 import CarModeIcon from "@/components/icons/CarModeIcon";
-import * as h3 from 'h3-js'
 import { metersToKM, secondsToMinutesAndHour } from "@/utils/converters";
 import DurationIcon from "@/components/icons/DurationIcon";
 import ArrowIcon from "@/components/icons/ArrowIcon";
+import { useShare } from "@/hooks/useShare";
 
 
 export default function RoutingPage() {
@@ -37,7 +37,7 @@ export default function RoutingPage() {
     const [duration, setDuration] = useState(0)
     const [durationUnit, setDurationUnit] = useState('minutes')
     const [activeMode, setActiveMode] = useState<'walking' | 'driving'>('walking')
-
+    const { encode } = useShare()
     // TODO - The intersection information is required to use the appropriate icon.
 
     const [routeDetails, setRouteDetails] = useState([])
@@ -72,11 +72,9 @@ export default function RoutingPage() {
 
     const handleRouteShare = async () => {
         // Highest resolution possible for better accuracy.
-        const RES = 15
+
         // get origin and destination
-        const indexedOrigin = h3.latLngToCell(routeOrigin.latitude, routeOrigin.longitude, RES)
-        const indexedDestination = h3.latLngToCell(routeDestination.latitude, routeDestination.longitude, RES)
-        const route = `${indexedOrigin}-${indexedDestination}`
+        const route = encode([`${routeOrigin.longitude},${routeOrigin.latitude}`, `${routeDestination.longitude},${routeDestination.latitude}`])
         // trigger the device default share modal
         // When the user visits this URL, if they have the app installed,
         // It can be triggered using the apps identifier, i.e the app scheme in the app.json which is 'campusguide'.
@@ -87,7 +85,7 @@ export default function RoutingPage() {
         // Then the user will be rerouted to the route page using navigation.navigate()
 
         await Share.share({
-            message: `${process.env.EXPO_PUBLIC_WEBSITE_URL}?route=${route}`,
+            message: `${process.env.EXPO_PUBLIC_WEBSITE_URL}map?route=${route}`,
             title: 'Share route',
         },
             { dialogTitle: 'Share route' })

@@ -24,7 +24,13 @@ import CampusNotSelectedModal from "@/components/modals/CampusNotSelectedModal";
 import { useModal } from "@/hooks/useModal";
 
 
-type Tabs = 'campus' | 'direction'
+
+
+type Tabs = 'campus' | 'direction';
+
+
+
+
 export default function Index() {
   const {
     snapPoints,
@@ -38,7 +44,11 @@ export default function Index() {
   const [currentTab, setCurrentTab] = useState<Tabs>('campus')
   const { selectedCampus } = useMapContext()
   const campuseIsSelected = useMemo(() => selectedCampus !== undefined, [selectedCampus])
-  const { modalVisible: campuseNotSelectedModal, setModalVisible: SetCampusNotSelectedModal } = useModal()
+  const { modalVisible: campuseNotSelectedModal, setModalVisible: SetCampusNotSelectedModal } = useModal();
+
+
+
+
   return (
     <SafeAreaView>
       {/* 
